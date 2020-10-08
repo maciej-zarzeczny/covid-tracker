@@ -1,4 +1,5 @@
 .navbar {
+  position: fixed;
   background-color: var(--color-dark);
   width: var(--navbar-width);
   min-height: 100vh;

@@ -37,6 +37,52 @@ a {
   text-decoration: none;
 }
 
+select {
+  max-width: 200px;
+}
+
+.container {
+  max-width: calc(100vw - var(--navbar-width));
+  margin: 0 auto;
+  padding-left: calc(var(--navbar-width) + 2rem);
+  padding-right: 2rem;
+}
+
+.inline-container {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.card--big {
+  padding: 2rem;
+}
+
+.card--small {
+  padding: 0.5rem 1rem;
+}
+
+.button {
+  background-color: var(--color-white);
+  border-radius: 15px;
+  outline: none;
+  font-size: var(--font-s);
+  color: var(--color-dark);
+  border: 1px solid #ccc;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
 .title {
   font-size: var(--font-l);
   font-weight: 700;
@@ -66,4 +112,16 @@ a {
 .text {
   font-size: var(--font-s);
   font-weight: 300;
+}
+
+.is-warning {
+  color: var(--color-warning);
+}
+
+.is-danger {
+  color: var(--color-danger);
+}
+
+.is-success {
+  color: var(--color-success);
 }

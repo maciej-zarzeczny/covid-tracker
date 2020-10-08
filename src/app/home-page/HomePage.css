@@ -1,0 +1,14 @@
+.home-page__header {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  margin-left: 0.5rem;
+}
+
+.date__icon {
+  margin-left: 0.5rem;
+}
