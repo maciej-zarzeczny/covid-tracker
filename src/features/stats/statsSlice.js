@@ -15,7 +15,7 @@ export const fetchGlobalData = createAsyncThunk("stats/fetchGlobalData", async (
 
   const response = await axios.get("https://api.covid19api.com/summary", requestOptions);
 
-  return { status: response.status, data: response.data.Global };
+  return { status: response.status, data: response.data };
 });
 
 const statsSlice = createSlice({
@@ -45,3 +45,7 @@ const statsSlice = createSlice({
 });
 
 export default statsSlice.reducer;
+
+export const selectAllCountries = (state) => state.stats.data.Countries;
+
+export const selectGlobalData = (state) => state.stats.data.Global;

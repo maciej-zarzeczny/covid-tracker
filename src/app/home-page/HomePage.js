@@ -4,18 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./HomePage.css";
 import { Loader } from "../loader/Loader";
-import { fetchGlobalData } from "../../features/stats/statsSlice";
-import { fetchAllCountries, selectAllCountries } from "../../features/countries/countriesSlice";
+import {
+  fetchGlobalData,
+  selectGlobalData,
+  selectAllCountries,
+} from "../../features/stats/statsSlice";
 import { StatsCards } from "../../features/stats/stats-cards/StatsCards";
 
 export const HomePage = () => {
   const dispatch = useDispatch();
 
   const statsStatus = useSelector((state) => state.stats.status);
-  const stats = useSelector((state) => state.stats.data);
+  const globalData = useSelector(selectGlobalData);
+  const countriesData = useSelector(selectAllCountries);
 
-  const countriesStatus = useSelector((state) => state.countries.status);
-  const countries = useSelector(selectAllCountries);
+  const [stats, setStats] = useState();
 
   // Get current date
   const currentDate = new Date().toLocaleDateString(undefined, {
@@ -24,39 +27,41 @@ export const HomePage = () => {
     day: "numeric",
   });
 
-  const [country, setCountry] = useState("");
-
   // Handle data fetching
   useEffect(() => {
     if (statsStatus === "idle") {
       dispatch(fetchGlobalData());
     }
+  }, [statsStatus, dispatch]);
 
-    if (countriesStatus === "idle") {
-      dispatch(fetchAllCountries());
-    }
-  }, [statsStatus, countriesStatus, dispatch]);
+  useEffect(() => {
+    if (globalData) setStats(globalData);
+  }, [globalData]);
 
   // Handle country selection
   const handleChange = (e) => {
-    setCountry(e.target.value);
+    const countryData = countriesData.find((country) => country.CountryCode === e.target.value);
+    setStats(countryData);
   };
 
   // Render all countries as select options
-  const renderedCountries = countries.map((country, idx) => (
-    <option value={country.ISO2} key={idx}>
-      {country.Country}
-    </option>
-  ));
+  const renderedCountries =
+    countriesData &&
+    countriesData.map((country, idx) => (
+      <option value={country.CountryCode} key={idx}>
+        {country.Country}
+      </option>
+    ));
 
-  if (statsStatus === "loading" || countriesStatus === "loading")
+  if (statsStatus === "loading" || statsStatus === "idle") {
     return (
       <div data-testid="loader">
         {statsStatus === "loading" && <p className="text">Loading</p>}
         <Loader />
       </div>
     );
-  if (statsStatus === "failed" || countriesStatus === "failed") return "There was an error";
+  }
+  if (statsStatus === "failed") return "There was an error";
 
   return (
     <section className="home-page container">
@@ -68,6 +73,7 @@ export const HomePage = () => {
 
         <div className="inline-container">
           <select className="button" onChange={handleChange}>
+            <option value="global">Global</option>
             {renderedCountries}
           </select>
 
@@ -78,7 +84,7 @@ export const HomePage = () => {
         </div>
       </header>
 
-      <StatsCards stats={stats} />
+      {stats && <StatsCards stats={stats} />}
     </section>
   );
 };

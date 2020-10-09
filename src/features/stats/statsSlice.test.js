@@ -35,6 +35,15 @@ describe("Stats Slice", () => {
           TotalConfirmed: 1000,
           TotalDeaths: 2000,
         },
+        Countries: [
+          {
+            Country: "Poland",
+            CountryCode: "PL",
+            TotalConfirmed: 2000,
+            TotalDeaths: 1000,
+            TotalRecovered: 500,
+          },
+        ],
       },
     });
 
@@ -42,7 +51,18 @@ describe("Stats Slice", () => {
     const state = store.getState();
 
     expect(state.stats.status).toBe("succeeded");
-    expect(state.stats.data).toEqual({ TotalConfirmed: 1000, TotalDeaths: 2000 });
+    expect(state.stats.data).toEqual({
+      Global: { TotalConfirmed: 1000, TotalDeaths: 2000 },
+      Countries: [
+        {
+          Country: "Poland",
+          CountryCode: "PL",
+          TotalConfirmed: 2000,
+          TotalDeaths: 1000,
+          TotalRecovered: 500,
+        },
+      ],
+    });
   });
 
   it("Sets status as failed and error as error messsage when fetchGlobalData was rejected", async () => {
