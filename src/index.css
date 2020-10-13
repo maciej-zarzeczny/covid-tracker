@@ -1,6 +1,7 @@
 :root {
   --color-dark: #25272a;
   --color-gray: #6e6f70;
+  --color-light-gray: #efefef;
   --color-danger: #d02c3c;
   --color-warning: #ffc005;
   --color-info: #098dec;
@@ -53,10 +54,15 @@ select {
   align-items: center;
 }
 
+.inline-container > :first-child {
+  margin-right: 1rem;
+}
+
 .card {
   background-color: var(--color-white);
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease-in-out;
 }
 
 .card--big {
@@ -65,6 +71,11 @@ select {
 
 .card--small {
   padding: 0.5rem 1rem;
+}
+
+.card--hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .button {
@@ -81,6 +92,13 @@ select {
 
 .button:hover {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.separator {
+  width: 100%;
+  margin: 2rem auto;
+  background-color: var(--color-light-gray);
+  height: 2px;
 }
 
 .title {

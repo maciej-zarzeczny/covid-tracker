@@ -1,14 +1,31 @@
+.home-page {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "stats global-data"
+    "chart global-data";
+
+  grid-template-columns: 1fr 0.4fr;
+  gap: 0 2rem;
+}
+
 .home-page__header {
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  grid-area: header;
 }
 
-.date {
-  margin-left: 0.5rem;
+.home-page__date-card {
+  color: var(--color-dark);
 }
 
-.date__icon {
-  margin-left: 0.5rem;
+.home-page__error {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: var(--navbar-width);
 }

@@ -1,0 +1,17 @@
+.stats-chart {
+  margin: 2rem 0 1rem 0;
+  grid-area: chart;
+}
+
+.stats-chart__header {
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.stats-chart__data-type {
+  text-transform: capitalize;
+}
+
+.stats-chart__canvas {
+  max-width: 100%;
+}

@@ -1,0 +1,43 @@
+.global-data {
+  grid-area: global-data;
+  margin-top: 3rem;
+  height: fit-content;
+}
+
+.global-card:not(:first-of-type) {
+  margin-top: 1rem;
+}
+
+.global-card__header {
+  margin: -2rem -2rem 0 -2rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-white);
+  padding: 1rem 2rem;
+}
+
+.global-card__header--info {
+  background-color: var(--color-info);
+}
+
+.global-card__header--danger {
+  background-color: var(--color-danger);
+}
+
+.global-card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.global-card__info {
+  margin-top: 1rem;
+}
+
+.global-card__info:first-of-type {
+  margin-top: 1rem;
+}

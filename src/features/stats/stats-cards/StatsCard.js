@@ -22,7 +22,7 @@ export const StatsCard = ({ color, title, data }) => {
   }, [title]);
 
   return (
-    <article className="card card--big stats-card">
+    <article className="card card--big card--hover stats-card">
       <span className={`stats-card__decoration stats-card__decoration--${color}`}></span>
       <header className="stats-card__header">
         <p className="subtitle">{title}</p>
