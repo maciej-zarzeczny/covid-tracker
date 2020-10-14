@@ -1,13 +1,16 @@
 import axios from "axios";
 
 import store from "../../app/store";
-import reducer, { fetchGlobalData } from "./statsSlice";
+import reducer, { fetchGlobalData, fetchCountryData } from "./statsSlice";
 
 jest.mock("axios");
 
 const initialState = {
   status: "idle",
+  countryDataStatus: "idle",
   data: [],
+  countryData: [],
+  currentCountry: {},
   error: null,
 };
 
@@ -76,5 +79,12 @@ describe("Stats Slice", () => {
 
     expect(state.stats.status).toBe("failed");
     expect(state.stats.error).not.toBe(null);
+  });
+
+  it("Should set countryDataStatus as loading when fetchCountryData is pending", () => {
+    expect(reducer(initialState, { type: fetchCountryData.pending })).toEqual({
+      ...initialState,
+      countryDataStatus: "loading",
+    });
   });
 });

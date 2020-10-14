@@ -11,7 +11,3 @@
 .stats-chart__data-type {
   text-transform: capitalize;
 }
-
-.stats-chart__canvas {
-  max-width: 100%;
-}

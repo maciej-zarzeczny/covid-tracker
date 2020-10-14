@@ -27,7 +27,7 @@ export const StatsCards = () => {
 
   // Render all countries as select options
   const renderedCountries = countries.map((country, idx) => (
-    <option value={country.Slug} key={idx}>
+    <option data-testid="country-option" value={country.Slug} key={idx}>
       {country.Country}
     </option>
   ));
@@ -35,11 +35,15 @@ export const StatsCards = () => {
   return (
     <section className="stats-cards">
       <header className="stats-cards__header inline-container">
-        <select className="button" onChange={handleCountryChange}>
+        <select data-testid="countries-select" className="button" onChange={handleCountryChange}>
           {renderedCountries}
         </select>
 
-        <select className="button data-type" onChange={handleStatsTypeChange}>
+        <select
+          data-testid="data-type-select"
+          className="button data-type"
+          onChange={handleStatsTypeChange}
+        >
           <option value="all">All data</option>
           <option value="daily">Daily data</option>
         </select>

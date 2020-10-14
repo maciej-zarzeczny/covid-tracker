@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Chart from "chart.js";
+import { Line } from "react-chartjs-2";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./StatsChart.css";
@@ -11,7 +11,7 @@ export const StatsChart = () => {
 
   const countryData = useSelector(selectCountryData);
   const country = useSelector(selectCurrentCountry);
-  const [chart, setChart] = useState();
+  const [data, setData] = useState({});
   const [dataType, setDataType] = useState("cases");
 
   // When selected country changes fetch chart data
@@ -24,68 +24,50 @@ export const StatsChart = () => {
     if (countryData.length === 0) return;
 
     let labels = [];
-    let datasets = { data: [], backgroundColor: [], borderColor: [], pointBorderColor: [] };
+    let datasets = {
+      backgroundColor: "",
+      borderColor: "",
+      pointBorderColor: "rgba(0, 0, 0, 0)",
+      data: [],
+    };
 
-    countryData.forEach((el) => {
-      switch (dataType) {
-        case "cases":
+    switch (dataType) {
+      case "cases":
+        datasets.backgroundColor = "rgba(6, 141, 236, 0.1)";
+        datasets.borderColor = "rgba(6, 141, 236, 1)";
+
+        countryData.forEach((el) => {
+          labels.push("");
           datasets.data.push(el.Confirmed);
-          datasets.backgroundColor.push("rgba(6, 141, 236, 0.1)");
-          datasets.borderColor.push("rgba(6, 141, 236, 1)");
-          datasets.pointBorderColor.push("rgba(0, 0, 0, 0)");
-          break;
+        });
+        break;
 
-        case "deaths":
+      case "deaths":
+        datasets.backgroundColor = "rgba(208, 44, 60, 0.1)";
+        datasets.borderColor = "rgba(208, 44, 60, 1)";
+
+        countryData.forEach((el) => {
+          labels.push("");
           datasets.data.push(el.Deaths);
-          datasets.backgroundColor.push("rgba(208, 44, 60, 0.1)");
-          datasets.borderColor.push("rgba(208, 44, 60, 1)");
-          datasets.pointBorderColor.push("rgba(0, 0, 0, 0)");
-          break;
+        });
+        break;
 
-        case "recovered":
+      case "recovered":
+        datasets.backgroundColor = "rgba(39, 167, 68, 0.1)";
+        datasets.borderColor = "rgba(39, 167, 68, 1)";
+
+        countryData.forEach((el) => {
+          labels.push("");
           datasets.data.push(el.Recovered);
-          datasets.backgroundColor.push("rgba(39, 167, 68, 0.1)");
-          datasets.borderColor.push("rgba(39, 167, 68, 1)");
-          datasets.pointBorderColor.push("rgba(0, 0, 0, 0)");
-          break;
+        });
+        break;
 
-        default:
-          break;
-      }
-      labels.push("");
-    });
-
-    if (chart) {
-      chart.data.labels = labels;
-      chart.data.datasets = [datasets];
-      chart.update();
-      return;
+      default:
+        break;
     }
 
-    const newChart = new Chart(ctx.current, {
-      type: "line",
-      data: {
-        labels,
-        datasets: [datasets],
-      },
-      options: {
-        responsive: true,
-        legend: {
-          display: false,
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
-    setChart(newChart);
-  }, [ctx, countryData, chart, dataType]);
+    setData({ labels, datasets: [datasets] });
+  }, [ctx, countryData, dataType]);
 
   const handleDataTypeChange = (e) => {
     setDataType(e.target.value);
@@ -106,7 +88,7 @@ export const StatsChart = () => {
       </header>
 
       <div className="card card--big">
-        <canvas ref={ctx} className="stats-chart__canvas"></canvas>
+        <Line data={data} options={{ legend: { display: false } }} />
       </div>
     </section>
   );
