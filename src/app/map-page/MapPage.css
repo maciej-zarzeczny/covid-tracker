@@ -1,0 +1,18 @@
+.map-page__header {
+  padding: 2rem 0;
+}
+
+.map-page__map {
+  max-width: 100%;
+  height: calc(100vh - 290px);
+}
+
+.map-page__button {
+  width: 100%;
+  margin-bottom: 1rem;
+  text-align: end;
+}
+
+.map__loading-text {
+  text-align: center;
+}

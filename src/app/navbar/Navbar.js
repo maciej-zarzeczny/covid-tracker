@@ -1,5 +1,6 @@
 import React from "react";
 import { FaChartLine, FaMapMarkedAlt, FaListUl } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 import "./Navbar.css";
 
@@ -9,17 +10,27 @@ export const Navbar = () => {
       <h1 className="title title--light navbar__logo">CovidTracker</h1>
 
       <div className="navbar__items">
-        <a href="#!">
-          <FaChartLine className="navbar__item navbar__item--active" />
-        </a>
+        <NavLink exact to="/" className="navbar__item" activeClassName="navbar__item--active">
+          <FaChartLine />
+        </NavLink>
 
-        <a href="#!">
-          <FaMapMarkedAlt className="navbar__item" />
-        </a>
+        <NavLink
+          data-testid="map-page"
+          to="/map"
+          className="navbar__item"
+          activeClassName="navbar__item--active"
+        >
+          <FaMapMarkedAlt />
+        </NavLink>
 
-        <a href="#!">
-          <FaListUl className="navbar__item" />
-        </a>
+        <NavLink
+          data-testid="list-page"
+          to="/list"
+          className="navbar__item"
+          activeClassName="navbar__item--active"
+        >
+          <FaListUl />
+        </NavLink>
       </div>
     </nav>
   );

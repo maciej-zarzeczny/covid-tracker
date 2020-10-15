@@ -41,7 +41,7 @@ export const HomePage = () => {
   return (
     <section className="home-page container">
       {error ? (
-        <div className="home-page__error">
+        <div className="error">
           <p className="subtitle is-danger">There was an error: {error}</p>
         </div>
       ) : (

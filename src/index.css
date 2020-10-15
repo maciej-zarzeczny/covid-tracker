@@ -101,6 +101,19 @@ select {
   height: 2px;
 }
 
+.error {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: var(--navbar-width);
+}
+
+.error--map {
+  margin-left: 0;
+}
+
 .title {
   font-size: var(--font-l);
   font-weight: 700;
