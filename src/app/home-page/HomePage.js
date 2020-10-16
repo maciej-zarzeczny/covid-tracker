@@ -1,18 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./HomePage.css";
-import { Loader } from "../loader/Loader";
-import { fetchGlobalData, selectGlobalData } from "../../features/stats/statsSlice";
+import { selectGlobalData } from "../../features/stats/statsSlice";
 import { StatsCards } from "../../features/stats/stats-cards/StatsCards";
 import { GlobalData } from "../../features/stats/global-data/GlobalData";
 import { StatsChart } from "../../features/stats/stats-chart/StatsChart";
 
 export const HomePage = () => {
-  const dispatch = useDispatch();
-
-  const statsStatus = useSelector((state) => state.stats.status);
   const globalData = useSelector(selectGlobalData);
   const error = useSelector((state) => state.stats.error);
 
@@ -22,21 +18,6 @@ export const HomePage = () => {
     month: "long",
     day: "numeric",
   });
-
-  // Handle data fetching
-  useEffect(() => {
-    if (statsStatus === "idle") {
-      dispatch(fetchGlobalData());
-    }
-  }, [statsStatus, dispatch]);
-
-  if (statsStatus === "loading" || statsStatus === "idle") {
-    return (
-      <div data-testid="loader">
-        <Loader fullPage={true} />
-      </div>
-    );
-  }
 
   return (
     <section className="home-page container">

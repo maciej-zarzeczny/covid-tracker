@@ -6,5 +6,4 @@
 
 .loader-container--full {
   height: 100vh;
-  margin-left: var(--navbar-width);
 }

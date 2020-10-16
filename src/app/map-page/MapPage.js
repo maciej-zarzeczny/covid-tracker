@@ -1,33 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./MapPage.css";
-import { Loader } from "../loader/Loader";
-import { fetchGlobalData, selectAllCountries } from "../../features/stats/statsSlice";
+import { selectAllCountries } from "../../features/stats/statsSlice";
 
 export const MapPage = () => {
-  const dispatch = useDispatch();
   const [chartData, setChartData] = useState([]);
   const [dataType, setDataType] = useState("cases");
   const [colors, setColors] = useState(["#FFF9EC", "#ffc005"]);
 
-  const status = useSelector((state) => state.stats.status);
   const error = useSelector((state) => state.stats.error);
   const countriesData = useSelector(selectAllCountries);
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchGlobalData());
-    }
-  }, [dispatch, status]);
-
-  useEffect(() => {
     if (countriesData) {
-      let data = [["Country", "Cases"]];
+      let data = [];
 
       switch (dataType) {
         case "cases":
+          data.push(["Country", "Cases"]);
+
           countriesData.forEach((country) => {
             data.push([country.CountryCode, country.TotalConfirmed]);
           });
@@ -36,6 +29,8 @@ export const MapPage = () => {
           break;
 
         case "deaths":
+          data.push(["Country", "Deaths"]);
+
           countriesData.forEach((country) => {
             data.push([country.CountryCode, country.TotalDeaths]);
           });
@@ -44,6 +39,8 @@ export const MapPage = () => {
           break;
 
         case "recovered":
+          data.push(["Country", "Recovered"]);
+
           countriesData.forEach((country) => {
             data.push([country.CountryCode, country.TotalRecovered]);
           });
@@ -62,14 +59,6 @@ export const MapPage = () => {
   const handleDataTypeChange = (e) => {
     setDataType(e.target.value);
   };
-
-  if (status === "idle" || status === "loading") {
-    return (
-      <div data-testid="loader">
-        <Loader fullPage={true} />
-      </div>
-    );
-  }
 
   return (
     <section className="map-page container">

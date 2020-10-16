@@ -6,7 +6,7 @@ import "./Navbar.css";
 
 export const Navbar = () => {
   return (
-    <nav className="navbar">
+    <nav className="navbar" data-testid="navbar">
       <h1 className="title title--light navbar__logo">CovidTracker</h1>
 
       <div className="navbar__items">
