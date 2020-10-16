@@ -1,11 +1,27 @@
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid var(--color-gray);
   border-collapse: collapse;
   padding: 1rem;
 }
 
+.stats-table-container {
+  margin-top: 2rem;
+}
+
 .stats-table {
   width: 100%;
+}
+
+.stats-table__cell--warning {
+  background-color: rgba(255, 192, 5, 0.1);
+}
+
+.stats-table__cell--danger {
+  background-color: rgba(208, 44, 60, 0.1);
+}
+
+.stats-table__cell--success {
+  background-color: rgba(39, 167, 68, 0.1);
 }
