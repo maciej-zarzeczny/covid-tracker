@@ -1,27 +1,40 @@
 table,
 th,
 td {
-  border: 1px solid var(--color-gray);
   border-collapse: collapse;
-  padding: 1rem;
+  padding: 2rem;
+  text-align: left;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background-color: var(--color-info);
+  color: var(--color-white);
+  position: sticky;
+  top: 0;
+}
+
+tbody tr:nth-of-type(2n) {
+  background-color: #f5f4f4;
 }
 
 .stats-table-container {
   margin-top: 2rem;
 }
 
-.stats-table {
-  width: 100%;
+.stats-table__cell--bold {
+  font-weight: bold;
 }
 
-.stats-table__cell--warning {
-  background-color: rgba(255, 192, 5, 0.1);
+.stats-table th:not(:first-of-type) {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.stats-table__cell--danger {
-  background-color: rgba(208, 44, 60, 0.1);
-}
-
-.stats-table__cell--success {
-  background-color: rgba(39, 167, 68, 0.1);
+.stats-table th:not(:first-of-type):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
