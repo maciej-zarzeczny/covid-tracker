@@ -1,5 +1,5 @@
 .navbar {
-  position: absolute;
+  position: fixed;
   left: 0;
   background-color: var(--color-dark);
   width: var(--navbar-width);
