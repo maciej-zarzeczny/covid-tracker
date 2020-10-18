@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "../../testUtils";
+import { render, screen } from "../../testUtils";
 
 import { ListPage } from "./ListPage";
 import { globalData, countriesData, dayOneDataGermany } from "../../testsMockData";

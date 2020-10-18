@@ -1,9 +1,19 @@
 .navbar {
-  position: fixed;
+  position: absolute;
+  left: 0;
   background-color: var(--color-dark);
   width: var(--navbar-width);
   min-height: 100vh;
   z-index: 5;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar__close {
+  color: var(--color-white);
+  padding-top: 2rem;
+  width: 100%;
+  display: none;
+  cursor: pointer;
 }
 
 .navbar__logo {
@@ -36,4 +46,53 @@
 .navbar__item--active > * {
   background-color: var(--color-gray);
   color: var(--color-light);
+}
+
+.navbar-trigger {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  margin: 2rem 0;
+  padding: 1rem;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  display: none;
+}
+
+.app-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-dark);
+  opacity: 0.5;
+  z-index: 4;
+  display: none;
+}
+
+.app-overlay--active {
+  display: block;
+}
+
+@media only screen and (max-width: 1300px) {
+  .navbar {
+    position: absolute;
+    left: calc(var(--navbar-width) * -1);
+  }
+
+  .navbar--active {
+    left: 0;
+  }
+
+  .navbar--active > .navbar__close {
+    display: block;
+  }
+
+  .navbar-trigger {
+    display: block;
+  }
 }

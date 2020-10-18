@@ -31,13 +31,17 @@ export const App = () => {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <section className="App__navbar">
+          <Navbar />
+        </section>
 
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/map" component={MapPage} />
-          <Route exact path="/list" component={ListPage} />
-        </Switch>
+        <section className="App__content">
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/map" component={MapPage} />
+            <Route exact path="/list" component={ListPage} />
+          </Switch>
+        </section>
       </div>
     </Router>
   );

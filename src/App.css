@@ -1,0 +1,16 @@
+.App {
+  display: grid;
+  grid-template-columns: var(--navbar-width) calc(100% - var(--navbar-width));
+}
+
+.App__navbar {
+}
+
+.App__content {
+}
+
+@media only screen and (max-width: 1300px) {
+  .App {
+    grid-template-columns: 4rem calc(100% - 4rem);
+  }
+}

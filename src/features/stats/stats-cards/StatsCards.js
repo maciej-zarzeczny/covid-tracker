@@ -35,7 +35,12 @@ export const StatsCards = () => {
   return (
     <section className="stats-cards">
       <header className="stats-cards__header inline-container">
-        <select data-testid="countries-select" className="button" onChange={handleCountryChange}>
+        <select
+          data-testid="countries-select"
+          className="button"
+          value={country.Slug}
+          onChange={handleCountryChange}
+        >
           {renderedCountries}
         </select>
 
