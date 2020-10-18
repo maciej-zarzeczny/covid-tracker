@@ -27,7 +27,7 @@ export const Navbar = () => {
         <div className="navbar__items">
           <NavLink
             exact
-            to="/"
+            to="/covid-tracker"
             className="navbar__item"
             activeClassName="navbar__item--active"
             onClick={handleNavbarClose}
@@ -37,7 +37,7 @@ export const Navbar = () => {
 
           <NavLink
             data-testid="map-page"
-            to="/map"
+            to="/covid-tracker/map"
             className="navbar__item"
             activeClassName="navbar__item--active"
             onClick={handleNavbarClose}
@@ -47,7 +47,7 @@ export const Navbar = () => {
 
           <NavLink
             data-testid="list-page"
-            to="/list"
+            to="/covid-tracker/list"
             className="navbar__item"
             activeClassName="navbar__item--active"
             onClick={handleNavbarClose}

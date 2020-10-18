@@ -37,9 +37,9 @@ export const App = () => {
 
         <section className="App__content">
           <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/map" component={MapPage} />
-            <Route exact path="/list" component={ListPage} />
+            <Route exact path="/covid-tracker" component={HomePage} />
+            <Route exact path="/covid-tracker/map" component={MapPage} />
+            <Route exact path="/covid-tracker/list" component={ListPage} />
           </Switch>
         </section>
       </div>
