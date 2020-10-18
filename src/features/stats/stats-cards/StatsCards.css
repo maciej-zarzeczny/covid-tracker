@@ -57,3 +57,23 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media only screen and (max-width: 1300px) {
+  .stats-cards__content {
+    padding: 0.1rem 0.1rem;
+    overflow-x: auto;
+    justify-content: unset;
+    margin-right: -2rem;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .stats-cards__content::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stats-card {
+    min-width: 250px;
+  }
+}

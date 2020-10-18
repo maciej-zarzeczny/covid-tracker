@@ -41,3 +41,29 @@
 .global-card__info:first-of-type {
   margin-top: 1rem;
 }
+
+@media only screen and (max-width: 1300px) {
+  .global-data {
+    min-width: calc(100vw - 4rem - 2rem);
+    display: flex;
+    overflow-x: auto;
+    padding: 1rem 0.1rem;
+    margin-right: -2rem;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .global-data::-webkit-scrollbar {
+    display: none;
+  }
+
+  .global-card {
+    min-width: 450px;
+    margin-right: 1rem;
+  }
+
+  .global-card:not(:first-of-type) {
+    margin-top: 0;
+  }
+}

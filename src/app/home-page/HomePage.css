@@ -20,3 +20,14 @@
 .home-page__date-card {
   color: var(--color-dark);
 }
+
+@media only screen and (max-width: 1300px) {
+  .home-page {
+    grid-template-areas:
+      "header"
+      "global-data"
+      "stats"
+      "chart";
+    grid-template-columns: 100%;
+  }
+}
